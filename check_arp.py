@@ -76,11 +76,9 @@ if __name__ == "__main__":
     ip_router = obtener_ip_router()
     if not ip_router:
         print("No se pudo obtener la IP del router.")
-        exit(1)  # Salir del script con código de error 1 si no se puede obtener la IP del router
-
+        exit()  # Salir del script con código de error
     mac_esperada = obtener_mac(ip_router)
     if not mac_esperada:
         print(f"No se pudo obtener la dirección MAC esperada para {ip_router}.")
-        exit(1)  # Salir del script con código de error 1 si no se puede obtener la MAC esperada
-
+        exit()  # Salir del script con código de error 
     detectar_modificacion_arp(ip_router, mac_esperada)
