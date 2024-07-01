@@ -7,9 +7,9 @@ def obtener_mac(ip):
     ether = Ether(dst="ff:ff:ff:ff:ff:ff")
     paquete = ether/arp
     try:
-        resp = send(paquete, verbose=False, timeout=1)
+        resp, _ = send(paquete, verbose=False)
         if resp:
-            return resp[0][ARP].hwsrc
+            return resp[ARP].hwsrc
         else:
             print(f"No se recibió respuesta para la solicitud ARP a {ip}")
             return None
